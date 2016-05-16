@@ -1,3 +1,5 @@
+#! /bin/sh
+
 if [ true = "$debug" ] ; then
   BIN_DIR=../bin/dbg
 else 
