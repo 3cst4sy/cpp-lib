@@ -240,7 +240,7 @@ inline double to_double( ::timeval  const& t )
 struct tty_impl {
 
   tty_impl( HANDLE h , int const n ) :
-  fd( h ) , ibuf( fd.get() , n ) , obuf( fd.get() ) 
+  fd( h ) , ibuf( NULL ) , obuf() 
   { always_assert( fd.valid() ) ; }
 
   auto_handle fd ;
@@ -267,10 +267,31 @@ inline void socket_shutdown_read (const socketfd_t s)
 inline void socket_shutdown_write(const socketfd_t s)
 { ::shutdown(s, SD_RECEIVE); }
 
+//
+// Remove a file, returning unlink() error code.
+//
+inline int remove(std::string const& name)
+{
+	return ::_unlink(name.c_str());
+}
+
+// 
+// Throw an exception of the form s + ": " + strerror( errnum ).
+//
+// If errnum is 0, use errno as errnum.
+// 
+// Standard, but NOT thread safe!
+//
+void strerror_exception(std::string const& s, int const errnum = 0);
 
 } // namespace detail_
 
 } // namespace cpl
 
+#define timegm _mkgmtime
+
+struct tm *gmtime_r(const time_t *timep, struct tm *result);
+
+char* strptime(const char* buf, const char* fmt, struct tm* tm);
 
 #endif // CPP_LIB_WINDOWS_WRAPPERS

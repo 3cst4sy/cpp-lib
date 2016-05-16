@@ -36,6 +36,7 @@
 #include "cpp-lib/exception.h"
 #include "cpp-lib/platform/wrappers.h"
 
+#include "boost/locale.hpp"
 
 using namespace cpl::util ;
 
@@ -47,7 +48,8 @@ std::ostream* die_output = 0 ;
 std::string const die_output_name() { return "CPP_LIB_DIE_OUTPUT" ; }
 
 // Locale to use for UTF-8 stuff.
-std::locale const utf8_locale("en_US.UTF-8");
+boost::locale::generator gen;
+std::locale const utf8_locale = gen("en_US.UTF-8");
 
 // UTF-8 <-> std::wstring conversion
 // We do not want wstring in public interfaces, but 

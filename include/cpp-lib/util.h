@@ -45,6 +45,7 @@
 #include <cmath>
 #include <cassert>
 #include <cstring>
+#include <cctype>
 
 
 namespace cpl {

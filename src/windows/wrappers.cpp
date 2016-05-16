@@ -27,6 +27,7 @@
   
 #include "cpp-lib/windows/wrappers.h"
 
+#include "cpp-lib/windows/iso8601.h"
 
 using namespace cpl::detail_ ;
 using namespace cpl::util    ;
@@ -190,7 +191,7 @@ HANDLE cpl::detail_::windows_open(
   if( !fd.valid() )
   { last_error_exception( "cannot open " + name ) ; }
 
-  return fd.release() ;
+  return fd.get() ;
 
 }
 
@@ -211,4 +212,43 @@ void cpl::util::sleep( double const& t ) {
   to_fractional( t , 1000000 , ret.tv_sec , ret.tv_usec ) ; 
   return ret ; 
 
+}
+
+// Errno is thread safe.
+// http://stackoverflow.com/questions/1694164/is-errno-thread-safe
+void cpl::detail_::strerror_exception
+(std::string const& s, int const errnum) {
+
+	throw std::runtime_error (s + ": " + std::strerror(errnum ? errnum : errno));
+
+}
+
+tm * gmtime_r(const time_t * timep, tm * result)
+{
+	int rc;
+	rc = ::gmtime_s(result, timep);
+	if (rc == 0) {
+		return result;
+	}
+	errno = rc;
+	return NULL;
+}
+
+char * strptime(const char* buf, const char* fmt, struct tm* tm)
+{
+	if (strcmp("%FT%TZ", fmt) != 0) {
+		if (strcmp("%F", fmt) != 0) {
+			return nullptr;
+		}
+	}
+	char flag;
+	int l = strlen(buf) - 1;
+	if (strcmp("%F", fmt) == 0) l++;
+	char *text = (char*)malloc(l * sizeof(char));
+	memcpy(text, buf, l);
+	text[l] = '\0';
+	if (parseISO8601(text, *tm, flag)) {
+		return (char*)(buf + strlen(buf));
+	}
+	return nullptr;
 }
