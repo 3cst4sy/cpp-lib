@@ -13,7 +13,7 @@ ifeq ($(CXX),cl)
 # Visual Studio
 COMPILE_BINARY_RECIPE = $(CXX) /Fe$@ $^ $(CPP_LIB_LIBRARY) $(BOOST_LIB) \
         $(LDFLAGS) $(WINSOCK) user32.lib advapi32.lib
-COMPILE_OBJECT_RECIPE = $(CXX) -c $(CXXFLAGS) $(CXXOPT) $(INCLUDES) $< /Fo$@
+COMPILE_OBJECT_RECIPE = $(CXX) /c $(CXXFLAGS) $(CXXOPT) $(INCLUDES) $< /Fo$@
 else
 # Metrowerks and GNU.
 # Yes, WINSOCK may be present (e.g., MinGW).

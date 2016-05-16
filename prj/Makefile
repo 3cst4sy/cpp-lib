@@ -77,6 +77,7 @@ OBJECTS =					        \
 
 # Windoze specific parts.
 WINDOWS_OBJECTS =                                                       \
+	$(OBJ_DIR)/windows/iso8601.$(OBJ_EXTENSION)			\
 	$(OBJ_DIR)/windows/serial.$(OBJ_EXTENSION)			\
 	$(OBJ_DIR)/windows/realtime.$(OBJ_EXTENSION)			\
 	$(OBJ_DIR)/windows/wrappers.$(OBJ_EXTENSION)			\
@@ -130,7 +131,7 @@ TESTS =				                                \
 	#$(BIN_DIR)/netutil     				\
 	#$(BIN_DIR)/file-test					\
 	#$(BIN_DIR)/sched-test
-
+	
 WINDOWS_TESTS =							\
 	$(BIN_DIR)/serial-test
 
@@ -146,7 +147,6 @@ POSIX1B_TESTS =
 ifeq ($(WINDOWS_STUFF),yes)
 OBJECTS += $(WINDOWS_OBJECTS)
 TESTS   += $(WINDOWS_TESTS)
-API_SYMBOL = -DWIN32
 endif
 
 ifeq ($(PNG_STUFF),yes)
@@ -173,8 +173,13 @@ endif
 
 
 symlinks:
+ifdef DONT_KNOW_SYMLINKS
+	( cd $(INCLUDE_CPP_LIB) ; rm -fR platform    )
+	( cd $(INCLUDE_CPP_LIB) ; rm -fR platform_rt )
+else
 	( cd $(INCLUDE_CPP_LIB) ; rm -f platform    )
 	( cd $(INCLUDE_CPP_LIB) ; rm -f platform_rt )
+endif
 ifeq ($(POSIX_STUFF),yes)
 ifeq ($(POSIX1B_STUFF),yes)
 	( cd $(INCLUDE_CPP_LIB) ; $(LINK) posix1b platform_rt )

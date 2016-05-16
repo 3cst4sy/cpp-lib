@@ -9,9 +9,15 @@
 #
 
 # BOOST_INCLUDES = -I$(HOME)/src/boost_1_58_0
-  BOOST_INCLUDES = -isystem $(HOME)/src/boost_1_60_0
+ifneq ($(CXX),cl)
+  BOOST_INCLUDES = -isystem /usr/include/boost
   EIGEN_INCLUDES = -isystem /opt/local/include/eigen3 -isystem /usr/include/eigen3 -isystem /usr/local/include/eigen3
-  PNGPP_INCLUDES = -isystem $(HOME)/src/png++-0.2.5 -isystem /usr/include/png++ -isystem /usr/local/include/png++
+  PNGPP_INCLUDES = -isystem $(HOME)/src/png++-0.2.5 -isystem /usr/include/png++ -isystem /usr/local/include/png++ 
+else
+  BOOST_INCLUDES = /I../lib/boost_1_60_0
+  EIGEN_INCLUDES = /I../lib/eigen-eigen-07105f7124f9
+  PNGPP_INCLUDES = /I../lib/libpng-1.6.21 /I../lib/png++-0.2.9 /D __STDC_LIB_EXT1__
+endif
 
 THIRD_PARTY_INCLUDES = $(LIBPNG_INCLUDES) $(BOOST_INCLUDES) $(PNGPP_INCLUDES) $(EIGEN_INCLUDES)
 

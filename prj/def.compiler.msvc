@@ -3,14 +3,16 @@
 #
 
 CXX      = cl
-CXXFLAGS = /Zc:forScope /EHsc /wd4244 /wd4258 /MT
-DEBUG = /Zi
+#CXXFLAGS = /Zc:forScope /EHsc /wd4244 /wd4258 /MT
+#/TP /analyze-
+CXXFLAGS = /EHsc /MT /nologo /D WIN32 /D _WIN32 /D _UNICODE /D UNICODE
+DEBUG = /ZI
 # TODO:  Add .NET optimize flags here.
-OPTIMIZE = /DNDEBUG
+OPTIMIZE = /Od
 
-WINSOCK = /link ws2_32.lib
+WINSOCK = ws2_32.lib /link /LIBPATH:../lib/boost_1_60_0/stage/lib
 
-CREATELIB = link /lib $(OBJECTS) /out:$(CPP_LIB)
+CREATELIB = lib /out:$(CPP_LIB_LIBRARY) $(OBJECTS)
 RANLIB = echo
 
 DONT_KNOW_SYMLINKS = 1
