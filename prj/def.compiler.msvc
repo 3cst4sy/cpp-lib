@@ -3,8 +3,6 @@
 #
 
 CXX      = cl
-#CXXFLAGS = /Zc:forScope /EHsc /wd4244 /wd4258 /MT
-#/TP /analyze-
 CXXFLAGS = /EHsc /MT /nologo /D WIN32 /D _WIN32 /D _UNICODE /D UNICODE
 DEBUG = /ZI
 # TODO:  Add .NET optimize flags here.
