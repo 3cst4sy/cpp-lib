@@ -26,7 +26,7 @@
 #include "cpp-lib/sys/file.h"
 
 #include "boost/lexical_cast.hpp"
-
+#include "boost/filesystem.hpp"
 
 using namespace cpl::util::file ;
 using namespace cpl::util       ;
@@ -95,7 +95,8 @@ void test_fileops(std::ostream& os) {
   std::string const name = "file-test-473856y71234";
   std::string const name2 = "file-test-473856y71234-2";
   std::string const name3 = "file-test-473856y71234-3";
-  cpl::util::file::chdir("/tmp");
+  boost::filesystem::path p = boost::filesystem::temp_directory_path();
+  cpl::util::file::chdir(p.string());
 
   verify_throws("unlink", cpl::util::file::unlink, name, false);
 

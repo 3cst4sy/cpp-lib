@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright 2015 KISS Technologies GmbH, Switzerland
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -151,7 +151,7 @@ void test_xdr_string(std::ostream& os) {
   // Size distribution of random strings: 0 to 300
   std::uniform_int_distribution<int> sd(0, 300);
   // Values: a-z
-  std::uniform_int_distribution<char> vd('a', 'z');
+  std::uniform_int_distribution<int> vd(0, static_cast<int>(std::numeric_limits<char>::max()));
 
   char buf[400];
 
@@ -558,11 +558,11 @@ int main() {
 
 	{
 		int a1[20];
-                int a2[1];
-                int a3[0];
+        int a2[1];
+        //int a3[0];
 		always_assert(20 == cpl::util::size(a1));
 		always_assert(1  == cpl::util::size(a2));
-		always_assert(0  == cpl::util::size(a3));
+		//always_assert(0  == cpl::util::size(a3));
 	}
 
 	{

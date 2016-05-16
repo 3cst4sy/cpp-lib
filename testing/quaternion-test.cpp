@@ -156,7 +156,7 @@ int main() {
     // Check deviation from orthogonal matrix.
     v_res_max = std::max( ortho_dev( C ) , v_res_max ) ;
     // Check deviation from det = 1.
-    v_res_max = std::max( std::fabs( 1 - determinant( C ) ) , v_res_max ) ;
+    v_res_max = std::max( std::fabs( 1 - determinant<3>( C ) ) , v_res_max ) ;
 
   }
 
