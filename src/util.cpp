@@ -36,6 +36,7 @@
 #include "cpp-lib/exception.h"
 #include "cpp-lib/platform/wrappers.h"
 
+#include "boost/system/error_code.hpp"
 #include "boost/locale.hpp"
 
 using namespace cpl::util ;
