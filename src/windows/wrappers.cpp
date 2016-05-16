@@ -21,6 +21,8 @@
 
 #include <cmath>
 
+#include <direct.h>
+
 #include "cpp-lib/util.h"
 #include "cpp-lib/sys/file.h"
 #include "cpp-lib/sys/util.h"
@@ -212,6 +214,50 @@ void cpl::util::sleep( double const& t ) {
   to_fractional( t , 1000000 , ret.tv_sec , ret.tv_usec ) ; 
   return ret ; 
 
+}
+
+void cpl::util::file::chdir(std::string const& path) {
+	int const res = ::_chdir(path.c_str());
+	if (0 != res) {
+		cpl::detail_::strerror_exception("chdir to " + path, errno);
+	}
+}
+
+bool cpl::util::file::exists(std::string const& name) {
+	try
+	{
+		HANDLE fh = windows_open(name);
+		CloseHandle(fh);
+		return true;
+	}
+	catch (const std::exception&)
+	{
+
+	}
+	return false;
+}
+
+void cpl::util::file::link(
+	std::string const& src, std::string const& dest) {
+	CopyFile(src.c_str(), dest.c_str(), false);
+}
+
+void cpl::util::file::unlink(std::string const& path, bool ignore_missing) {
+	int const res = ::_unlink(path.c_str());
+	if (0 != res) {
+		if (ignore_missing && ENOENT == errno) {
+			return;
+		}
+		cpl::detail_::strerror_exception("unlink (remove) " + path, errno);
+	}
+}
+
+void cpl::util::file::rename(
+	std::string const& src, std::string const& dest) {
+	int const res = ::rename(src.c_str(), dest.c_str());
+	if (0 != res) {
+		cpl::detail_::strerror_exception("rename " + src + " to " + dest, errno);
+	}
 }
 
 // Errno is thread safe.
