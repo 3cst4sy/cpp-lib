@@ -21,11 +21,10 @@
 #include <memory>
 
 #include "cpp-lib/util.h"
-#include "cpp-lib/matrix-io.h"
 
 using namespace cpl::math ;
 
-void cpl::math::to_file(
+/*void cpl::math::to_file(
   std::vector< std::vector< double > > const& v ,
   std::string const& filename ,
   bool do_Transpose
@@ -40,4 +39,4 @@ void cpl::math::to_file(
   if( do_Transpose ) { os << transpose( m ) ; }
   else               { os <<            m   ; }
 
-}
+}*/

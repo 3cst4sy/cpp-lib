@@ -21,7 +21,9 @@
 #include <iostream>
 #include <cassert>
 
+#ifndef WIN32
 #include <syslog.h>
+#endif
 
 #include "cpp-lib/util.h"
 
@@ -95,15 +97,17 @@ int cpl::detail_::syslog_writer::write(char const* const buf, int const n) {
   int last = n;
   // Trim whitespace at end of line, typically from use of
   // std::endl
-  while (last >= 1 && std::isspace(buf[last - 1])) {
-    --last;
-  }
+  //while (last >= 1 && std::isspace(buf[last - 1])) {
+  //  --last;
+  //}
 
   assert(last >= 0);
 
   if (currlevel <= minlevel_syslog) {
+#ifndef WIN32
     syslog(LOG_EMERG + static_cast<int>(currlevel),
            "%s(%s): %.*s", tag(), to_string(currlevel), last, buf);
+#endif
   }
 
   if (echo_ && currlevel <= minlevel_echo) {

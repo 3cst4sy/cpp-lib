@@ -236,8 +236,8 @@ template <typename T> struct tileset {
   }
 
   // Writes the given tile to filename, converting pixels as per rgba_function
-  void write_tile(tile_type const& tile, std::string const& filename, 
-       rgba_function const&) const;
+  /*void write_tile(tile_type const& tile, std::string const& filename, 
+       rgba_function const&) const;*/
 
   // Get tile at tile coords/zoom level, if allocated
   tile_type const* tile_at(int const zoom, tile_coordinates const& tc) const {
@@ -458,7 +458,7 @@ void cpl::map::tileset<T>::flush_tiles(
 
   cpl::map::write_dynamic_info(sl, *this); 
   cpf::unlink(params.empty_tile_name, true);
-  write_tile(default_tile(), params.empty_tile_name, pix);
+  //write_tile(default_tile(), params.empty_tile_name, pix);
 
   for (int z = minzoom(); z <= maxzoom(); ++z) {
     auto const nw = north_west_tile(z);
@@ -482,7 +482,7 @@ void cpl::map::tileset<T>::flush_tiles(
       // by writing to the empty tile inadvertantly
       cpf::unlink(filename, true);
       if (NULL != ptile) {
-        write_tile(*ptile, filename, pix);
+        //write_tile(*ptile, filename, pix);
       } else {
         // Ignore if file is already deleted
         cpf::link(params.empty_tile_name, filename);
@@ -500,7 +500,7 @@ void cpl::map::tileset<T>::flush_tiles(
   }
 }
 
-template<typename T>
+/*template<typename T>
 void cpl::map::tileset<T>::write_tile(
     cpl::map::tileset<T>::tile_type const& tile,
     std::string const& filename,
@@ -514,6 +514,6 @@ void cpl::map::tileset<T>::write_tile(
   }}
 
   img.write(filename);
-}
+}*/
 
 #endif // CPP_LIB_MAP_H
