@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\audio.cpp" />
+    <ClCompile Include="..\src\blowfish.cpp" />
+    <ClCompile Include="..\src\cgi.cpp" />
+    <ClCompile Include="..\src\command_line.cpp" />
+    <ClCompile Include="..\src\dispatch.cpp" />
+    <ClCompile Include="..\src\geodb.cpp" />
+    <ClCompile Include="..\src\geometry.cpp" />
+    <ClCompile Include="..\src\gnss.cpp" />
+    <ClCompile Include="..\src\http.cpp" />
+    <ClCompile Include="..\src\igc.cpp" />
+    <ClCompile Include="..\src\interpolation.cpp" />
+    <ClCompile Include="..\src\map.cpp" />
+    <ClCompile Include="..\src\math-util.cpp" />
+    <ClCompile Include="..\src\matrix-io.cpp" />
+    <ClCompile Include="..\src\network.cpp" />
+    <ClCompile Include="..\src\nmea.cpp" />
+    <ClCompile Include="..\src\ogn.cpp" />
+    <ClCompile Include="..\src\random.cpp" />
+    <ClCompile Include="..\src\registry.cpp" />
+    <ClCompile Include="..\src\sys\file.cpp" />
+    <ClCompile Include="..\src\sys\logger.cpp" />
+    <ClCompile Include="..\src\sys\server.cpp" />
+    <ClCompile Include="..\src\sys\syslogger.cpp" />
+    <ClCompile Include="..\src\sys\util.cpp" />
+    <ClCompile Include="..\src\util.cpp" />
+    <ClCompile Include="..\src\varlist.cpp" />
+    <ClCompile Include="..\src\windows\iso8601.cpp" />
+    <ClCompile Include="..\src\windows\realtime.cpp" />
+    <ClCompile Include="..\src\windows\serial.cpp" />
+    <ClCompile Include="..\src\windows\wrappers.cpp" />
+    <ClCompile Include="..\src\windows\wrappers_special.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\cpp-lib\array_ops.h" />
+    <ClInclude Include="..\include\cpp-lib\assert.h" />
+    <ClInclude Include="..\include\cpp-lib\audio.h" />
+    <ClInclude Include="..\include\cpp-lib\bg-typedefs.h" />
+    <ClInclude Include="..\include\cpp-lib\blowfish.h" />
+    <ClInclude Include="..\include\cpp-lib\cgi.h" />
+    <ClInclude Include="..\include\cpp-lib\command_line.h" />
+    <ClInclude Include="..\include\cpp-lib\container-util.h" />
+    <ClInclude Include="..\include\cpp-lib\crypt_stream.h" />
+    <ClInclude Include="..\include\cpp-lib\detail\socket_lowlevel.h" />
+    <ClInclude Include="..\include\cpp-lib\dispatch.h" />
+    <ClInclude Include="..\include\cpp-lib\geodb.h" />
+    <ClInclude Include="..\include\cpp-lib\geometry.h" />
+    <ClInclude Include="..\include\cpp-lib\gnss.h" />
+    <ClInclude Include="..\include\cpp-lib\http.h" />
+    <ClInclude Include="..\include\cpp-lib\igc.h" />
+    <ClInclude Include="..\include\cpp-lib\interpolation.h" />
+    <ClInclude Include="..\include\cpp-lib\map.h" />
+    <ClInclude Include="..\include\cpp-lib\math-util.h" />
+    <ClInclude Include="..\include\cpp-lib\matrix-wrapper.h" />
+    <ClInclude Include="..\include\cpp-lib\minimize.h" />
+    <ClInclude Include="..\include\cpp-lib\nmea.h" />
+    <ClInclude Include="..\include\cpp-lib\ogn.h" />
+    <ClInclude Include="..\include\cpp-lib\optimization.h" />
+    <ClInclude Include="..\include\cpp-lib\quaternion.h" />
+    <ClInclude Include="..\include\cpp-lib\random.h" />
+    <ClInclude Include="..\include\cpp-lib\registry-crypt.h" />
+    <ClInclude Include="..\include\cpp-lib\registry.h" />
+    <ClInclude Include="..\include\cpp-lib\serial.h" />
+    <ClInclude Include="..\include\cpp-lib\spatial-index.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\file.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\logger.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\network.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\realtime.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\server.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\syslogger.h" />
+    <ClInclude Include="..\include\cpp-lib\sys\util.h" />
+    <ClInclude Include="..\include\cpp-lib\top-n.h" />
+    <ClInclude Include="..\include\cpp-lib\units.h" />
+    <ClInclude Include="..\include\cpp-lib\util.h" />
+    <ClInclude Include="..\include\cpp-lib\varlist.h" />
+    <ClInclude Include="..\include\cpp-lib\windows\iso8601.h" />
+    <ClInclude Include="..\include\cpp-lib\windows\net_impl.h" />
+    <ClInclude Include="..\include\cpp-lib\windows\realtime.h" />
+    <ClInclude Include="..\include\cpp-lib\windows\wrappers.h" />
+    <ClInclude Include="..\include\cpp-lib\xdr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\prj\def.compiler.clang" />
+    <None Include="..\prj\def.compiler.clang-3.6" />
+    <None Include="..\prj\def.compiler.gcc-5-macports" />
+    <None Include="..\prj\def.compiler.gcc-5-ubuntu-14" />
+    <None Include="..\prj\def.compiler.mingw" />
+    <None Include="..\prj\def.compiler.mingw-cross" />
+    <None Include="..\prj\def.compiler.msvc" />
+    <None Include="..\prj\def.compiler.mwcc" />
+    <None Include="..\prj\def.configuration" />
+    <None Include="..\prj\def.includes" />
+    <None Include="..\prj\def.platform.cygwin" />
+    <None Include="..\prj\def.platform.darwin" />
+    <None Include="..\prj\def.platform.freebsd" />
+    <None Include="..\prj\def.platform.linux" />
+    <None Include="..\prj\def.platform.linux-clang-libc++" />
+    <None Include="..\prj\def.platform.windows_xp" />
+    <None Include="..\prj\def.recipes" />
+    <None Include="..\prj\Makefile" />
+    <None Include="..\testing\interpolation-test.conf" />
+    <None Include="..\testing\logger-test.conf" />
+    <None Include="..\testing\registry-test.conf" />
+    <None Include="..\testing\registry-test.conf.var" />
+    <None Include="..\testing\registry-test.m" />
+    <None Include="..\testing\run-all-tests.sh" />
+    <None Include="..\testing\run-fast-tests.sh" />
+    <None Include="..\testing\scripts\run-all-tests.sh" />
+    <None Include="..\testing\scripts\run-annoying-tests.sh" />
+    <None Include="..\testing\scripts\run-fast-tests.sh" />
+    <None Include="..\testing\scripts\testenv.sh" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6b0f129b-d215-4af6-af67-880af33c3820}</ProjectGuid>
+    <Keyword>Clang</Keyword>
+    <RootNamespace>ogn_cpplib</RootNamespace>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140_clang_3_7</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">WIN32;_DEBUG;_LIB;__STDC_LIB_EXT1__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">WIN32;NDEBUG;_LIB;__STDC_LIB_EXT1__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Level3</WarningLevel>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Documents\Coding\ogn-cpplib\lib\libpng-1.6.21;D:\Documents\Coding\ogn-cpplib\lib\png++-0.2.9;D:\Documents\Coding\ogn-cpplib\lib\eigen-eigen-07105f7124f9;D:\Documents\Coding\ogn-cpplib\lib\boost_1_60_0;D:\Documents\Coding\ogn-cpplib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Lib>
+      <TargetMachine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MachineX86</TargetMachine>
+    </Lib>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">del $(SolutionDir)..\include\cpp-lib\platform /S /Q
+del $(SolutionDir)..\include\cpp-lib\platform_rt /S /Q
+xcopy $(SolutionDir)..\include\cpp-lib\windows $(SolutionDir)..\include\cpp-lib\platform /I
+xcopy $(SolutionDir)..\include\cpp-lib\windows $(SolutionDir)..\include\cpp-lib\platform_rt /I</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
