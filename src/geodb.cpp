@@ -27,6 +27,7 @@
 #include "boost/property_tree/xml_parser.hpp"
 
 #include <exception>
+#include <istream>
 #include <stdexcept>
 
 // using namespace boost::algorithm;
