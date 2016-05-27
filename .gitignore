@@ -23,8 +23,3 @@ prj/def.compiler
 prj/def.platform
 download
 lib
-visual14/Debug
-visual14/*-Test/Debug
-*.opendb
-*.db
-*.suo
