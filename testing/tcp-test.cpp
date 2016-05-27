@@ -56,6 +56,7 @@ void usage( std::string const& name ) {
 "cat      port:       Wait for connection and copy TCP stream to stdout.\n"
 "reverse  port:       Start a reverse server, one thread per connection.\n"
 "hello    port:       Start a hello world server, immediately closes connection.\n"
+"source   port:       Starts a data source with two control commands.\n"
 "connect  host port:  Connect, copy stdin into connection and then\n"
 "                     connection to stdout.\n"
 "tee      host ports...:  Copy stdin to all ports on given host.\n"
@@ -136,6 +137,64 @@ void tee( std::istream& is ,
       }
     }
   }
+}
+
+
+void run_datasource( std::string const& port ) {
+  
+  acceptor a( port ) ;
+  std::cerr << "Data source example version 0.02 listening on " 
+            << a.local()
+	    << std::endl ;
+
+  while( 1 ) {
+
+    connection c( a ) ;
+    std::cerr << "Connection from: " << c.peer() << std::endl ;
+
+    onstream os( c ) ;
+
+    bool send_data = true;
+    bool running   = true;
+      
+    auto const command_handler = [&c, &running, &send_data]() {
+      instream is(c);
+      std::string command;
+
+      while (is >> command) {
+        if        ("quit"      == command) {
+          running = false;
+          break;
+        } else if ("send_data" == command) {
+          is >> send_data;
+        } else {
+          // TODO: thread sync
+          // os << "error: unknown command: " << command << std::endl;
+        }
+      }
+    };
+
+    std::thread command_handler_thread(command_handler);
+
+    os << "200 Welcome to the data source.\n"
+       << "200 Type send_data <0|1> to switch off/on sending.\n"
+       << "200 Type quit to exit" << std::endl;
+
+    while (os && running) {
+      if (send_data) {
+        os << "{ id: foobar, time: " 
+           << std::setprecision(12) << cpl::util::utc() 
+           << ", data: [1,2,3,4] }"
+           << std::endl ;
+      }
+
+      cpl::util::sleep(2.0);
+    }
+
+    command_handler_thread.join();
+    
+  }
+
 }
 
 void run_hello_server( std::string const& port ) {
@@ -344,6 +403,11 @@ int main( int argc , char const* const* const argv ) {
     
     if( 3 != argc ) { usage( argv[ 0 ] ) ; return 1 ; }
     run_hello_server( argv[ 2 ] ) ;
+
+  } else if( "source" == command ) {
+    
+    if( 3 != argc ) { usage( argv[ 0 ] ) ; return 1 ; }
+    run_datasource( argv[ 2 ] ) ;
     
   } else if( "tee" == command ) {
 
