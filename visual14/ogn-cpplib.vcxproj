@@ -139,7 +139,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140_clang_3_7</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+	<CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
@@ -154,15 +155,22 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MultiThreaded</RuntimeLibrary>
       <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Level3</WarningLevel>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\Documents\Coding\ogn-cpplib\lib\libpng-1.6.21;D:\Documents\Coding\ogn-cpplib\lib\png++-0.2.9;D:\Documents\Coding\ogn-cpplib\lib\eigen-eigen-07105f7124f9;D:\Documents\Coding\ogn-cpplib\lib\boost_1_60_0;D:\Documents\Coding\ogn-cpplib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\include;..\lib\boost_1_60_0;..\lib\eigen-eigen-07105f7124f9;..\lib\lpng1621;..\lib\png++-0.2.9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">EditAndContinue</DebugInformationFormat>
       <MinimalRebuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</MinimalRebuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\include;..\lib\boost_1_60_0;..\lib\eigen-eigen-07105f7124f9;..\lib\lpng1621;..\lib\png++-0.2.9;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <TargetMachine Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MachineX86</TargetMachine>
     </Lib>
     <PreBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">del $(SolutionDir)..\include\cpp-lib\platform /S /Q
+del $(SolutionDir)..\include\cpp-lib\platform_rt /S /Q
+xcopy $(SolutionDir)..\include\cpp-lib\windows $(SolutionDir)..\include\cpp-lib\platform /I
+xcopy $(SolutionDir)..\include\cpp-lib\windows $(SolutionDir)..\include\cpp-lib\platform_rt /I</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">del $(SolutionDir)..\include\cpp-lib\platform /S /Q
 del $(SolutionDir)..\include\cpp-lib\platform_rt /S /Q
 xcopy $(SolutionDir)..\include\cpp-lib\windows $(SolutionDir)..\include\cpp-lib\platform /I
 xcopy $(SolutionDir)..\include\cpp-lib\windows $(SolutionDir)..\include\cpp-lib\platform_rt /I</Command>
